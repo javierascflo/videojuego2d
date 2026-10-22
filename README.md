@@ -10,8 +10,8 @@ El proyecto nace en el marco del desarrollo de aplicaciones web interactivas uti
 
 ### Información del Creador
 * **Desarrollador:** Javier Alessandro Ascencio
-* **Número de Control:** `2026-ESP-01`
-* **Proyecto:** Desarrollo Web Canvas HTML5
+* **Número de Control:** 24200765
+* **Proyecto:** Examen 2do seguimiento
 
 ---
 
