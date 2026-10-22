@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noche de Espantos 2D - Bosque Encantado</title>
+    <!-- Favicon temático -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎃</text></svg>">
+    <!-- Bootstrap 5 CSS en línea -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Creepster & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Archivo de Estilos Externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-black text-light min-vh-100 d-flex flex-column justify-content-between">
+
+    <!-- AUDIO DE FONDO MP3 (/assets/background.mp3) -->
+    <audio id="bgMusic" src="assets/audio.mp3" preload="auto" loop></audio>
+
+    <!-- HEADER SOBRIO -->
+    <header class="container-fluid py-3 header-sober border-bottom border-dark shadow-lg">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <div class="header-icon-box bg-dark p-2 rounded border border-secondary border-opacity-50 fs-3">🎃</div>
+                <div>
+                    <h1 class="h3 mb-0 font-creepster text-warning tracking-wide">Noche de Espantos 2D</h1>
+                    <small class="text-secondary fw-medium">Edición Bosque Encantado & Día de Muertos</small>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-2 mt-md-0">
+                <div class="badge-score px-3 py-2 rounded fw-bold shadow-sm d-flex align-items-center gap-2 border border-secondary border-opacity-50">
+                    <span class="fs-5">👻</span> Espantos Atrapados: <span id="score" class="text-warning fs-5">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTROLS & CANVAS CONTAINER -->
+    <main class="container-fluid my-3 px-4 flex-grow-1 d-flex flex-column align-items-center">
+        
+        <!-- BARRA DE ACCESOS Y BOTÓN DE INSTRUCCIONES -->
+        <div class="w-100 max-w-game d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3 control-bar p-3 rounded border border-dark shadow-sm">
+            <div class="d-flex align-items-center gap-2">
+                <button id="audioBtn" class="btn btn-sm btn-outline-warning px-3 py-2 rounded d-flex align-items-center gap-2 fw-semibold transition-all text-light border-secondary">
+                    <span id="audioIcon" class="fs-6">🔇</span> Música MP3: <span id="audioStatus">OFF</span>
+                </button>
+                <button id="resetBtn" class="btn btn-sm btn-outline-secondary px-3 py-2 rounded d-flex align-items-center gap-2 fw-semibold transition-all text-light">
+                    🔄 Reiniciar Conteo
+                </button>
+            </div>
+            <div>
+                <button class="btn btn-sm btn-warning text-dark px-3 py-2 rounded fw-bold d-flex align-items-center gap-2 shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#rulesCollapse" aria-expanded="false" aria-controls="rulesCollapse">
+                    ℹ️ <span id="toggleText">Mostrar Instrucciones</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE INSTRUCCIONES COLAPSABLE -->
+        <div class="collapse w-100 max-w-game mb-4" id="rulesCollapse">
+            <div class="card rules-card text-warning border border-secondary shadow-lg p-4 rounded bg-dark">
+                <h5 class="fw-bold mb-3 d-flex align-items-center gap-2 font-creepster fs-4">
+                    <span>🦇</span> Reglas y Funcionamiento del Juego:
+                </h5>
+                <ul class="mb-0 small text-light ps-3 lh-lg">
+                    <li><strong>Objetos Activos (25 constantes):</strong> Calabazas, Fantasmas, Murciélagos, Calaveritas y Zombis (PNG) recorren la pantalla.</li>
+                    <li><strong>Fondo JPG y Audio MP3:</strong> El escenario utiliza <code>/assets/background.jpg</code> y la música ambiental reproduce <code>/assets/background.mp3</code>.</li>
+                    <li><strong>4 Movimientos y Rebote en Bordes:</strong> Los objetos rebotan al tocar los límites del canvas y al chocar entre sí con destellos 💥.</li>
+                    <li><strong>Eliminación con Mouse:</strong> Haz clic sobre cualquier objeto para desintegrarlo y reaparecerá al instante en otra zona.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTENEDOR DEL CANVAS (VIDEOJUEGO 1280x720) -->
+        <div class="card canvas-card border border-dark shadow-2xl overflow-hidden position-relative rounded p-2 bg-black">
+            <div class="canvas-wrapper d-flex justify-content-center align-items-center">
+                <canvas id="gameCanvas" width="1280" height="720" class="rounded shadow-lg border border-dark"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER SOBRIO -->
+    <footer class="container-fluid py-3 footer-sober border-top border-dark text-center text-md-start">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <span class="small text-secondary">Noche de Espantos 2D <span class="text-warning">|</span> Proyecto Desarrollo Web Canvas HTML5</span>
+            <span class="small text-secondary fw-semibold d-flex align-items-center gap-2">
+                🦇 Créditos del Creador: <span class="text-light fw-bold">Javier Alessandro Ascencio</span> 
+                <span class="text-secondary ms-1">No. Control:</span> <span class="badge bg-dark text-warning border border-secondary font-monospace px-2 py-1">2026-ESP-01</span>
+            </span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Archivo de Script Externo -->
+    <script src="script.js"></script>
+</body>
+</html>

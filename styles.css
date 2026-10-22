@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600;700&display=swap');
+
+body.bg-black {
+    font-family: 'Inter', sans-serif;
+    background-color: #000000 !important;
+    color: #e2e8f0;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23ffaa00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'%3E%3C/circle%3E%3Cline x1='12' y1='6' x2='12' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='12' x2='18' y2='12'%3E%3C/line%3E%3C/svg%3E") 16 16, crosshair;
+}
+
+.font-creepster {
+    font-family: 'Creepster', cursive;
+    letter-spacing: 1.5px;
+}
+
+.max-w-game {
+    max-width: 1300px;
+}
+
+.header-sober, .footer-sober {
+    background-color: #050505;
+}
+
+.control-bar {
+    background-color: #0a0a0a;
+}
+
+.rules-card {
+    background-color: #080808 !important;
+    border-color: #222 !important;
+}
+
+.canvas-card {
+    background-color: #050505;
+    border-color: #1a1a1a !important;
+}
+
+.badge-score {
+    background-color: #0a0a0a;
+    color: #f8fafc;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    background-color: #000000;
+}
+
+.transition-all {
+    transition: all 0.25s ease-in-out;
+}
